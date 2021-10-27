@@ -1,0 +1,7 @@
+Parcial*
+.metadata/
+*/bin/*
+.project
+.classpath
+.settings
+module-info.java

@@ -1,0 +1,9 @@
+4-
+a. Las clases anonimas no se pueden instanciar mas 
+alla de donde son declaradas porque no se cual es 
+su nombre. (clases en funciones)
+
+b. Verdadero?
+
+d. No hay manera de expresar extencion e 
+implementacion todo junto en clases anonimas
