@@ -2,6 +2,7 @@ package parcial;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Propuesta {
 	//Crea un diccionario vacio y lo voy cargando
@@ -12,7 +13,16 @@ public class Propuesta {
 		return map;
 	}
 	
-	public boolean haveThisVegetable(String v) {
+	public Set<String> darmeClaves() {
+		return map.keySet();
+	}
+	
+	@Override
+	public String toString() {
+		return "\n\t\tPropuesta [map=" + map + "]";
+	}
+
+	public boolean tieneVerdura(String v) {
 		if(map.get(v) == null ) {
 			return false;
 		}

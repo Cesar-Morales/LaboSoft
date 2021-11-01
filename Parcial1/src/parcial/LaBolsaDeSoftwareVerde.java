@@ -6,6 +6,7 @@ public class LaBolsaDeSoftwareVerde {
 	
 	private List<Establecimiento> establecimientos = new ArrayList<Establecimiento>();
 	private List<Propuesta> propuestasDeBolsones = new ArrayList<Propuesta>();
+	private List<Verdura> verdurasCosechadas = new ArrayList<Verdura>();
 	
 
 	public void agregarPropuestas(Propuesta p) {
@@ -16,60 +17,68 @@ public class LaBolsaDeSoftwareVerde {
 		establecimientos.add(e);
 	}
 	
-	public boolean sePuedeArmarBolson(Integer anio, Integer mes, Propuesta propuestaDeBolsones) {
+	private void obtenerVerdurasCosechadas(Integer anio, Integer mes) {
 		for(Establecimiento e: establecimientos) {
 			Iterator<Verdura> iter = e.iteradorDeVerdurasCosechadas(anio, mes);
-			Integer cant = propuestaDeBolsones.getMap().size();
 			while(iter.hasNext()) {
 				Verdura v = iter.next();
 				if(v != null) {
-					String nom = v.getNombre();
-					if(propuestaDeBolsones.haveThisVegetable(nom) 
-							&& (v.getCosechada()) 
-							&&(propuestaDeBolsones.returnCant(nom) <= v.getCantidad())) {
-						cant--;
-					}
+					verdurasCosechadas.add(v);
 				}
 			}
-			// si almenos 1 establecimiento puede armar bolson retorno TRUE
-			if (cant.equals(0)) {
+		}
+	}
+	
+	private boolean includeElem(String s, Propuesta p) {
+		for(String k: p.darmeClaves()) {
+			if(k.equals(s)) {
 				return true;
 			}
 		}
-		//si nadie puede armar bolson retornar FALSE!
+		return false;
+	}
+	
+	public boolean sePuedeArmarBolson(Integer anio, Integer mes, Propuesta propuestaDeBolsones) {
+		obtenerVerdurasCosechadas(anio, mes);
+		Integer cant = propuestaDeBolsones.darmeClaves().size();
+		for(Verdura v: verdurasCosechadas) {
+			String nom = v.getNombre();
+			if(includeElem(nom,propuestaDeBolsones) && (propuestaDeBolsones.returnCant(nom) <= v.getCantidad())) {	
+					cant--;
+			}
+		}
+		if(cant.equals(0)) {			
+			return true;
+		}
 		return false;
 	}
 	
 	public int cantidadDeBolsones(Integer anio, Integer mes, Propuesta propuestaDeBolsones) {
 		Integer total = 0;
-		for(Establecimiento e: establecimientos) {
-			Iterator<Verdura> iter = e.iteradorDeVerdurasCosechadas(anio, mes);
-			Integer cant = propuestaDeBolsones.getMap().size();
-			while(iter.hasNext()) {
-				Verdura v = iter.next();
-				if(v != null) {
-					String nom = v.getNombre();
-					if(propuestaDeBolsones.haveThisVegetable(nom) 
-							&& (v.getCosechada()) 
-							&&(propuestaDeBolsones.returnCant(nom) <= v.getCantidad())) {
-						cant--;
-					}
-				}
-			}
-			// si almenos 1 establecimiento puede armar bolson retorno TRUE
-			if (cant.equals(0)) {
-				total++;
-			}
+		if(sePuedeArmarBolson(anio, mes, propuestaDeBolsones)) {
+			total++;
 		}
 		return total;
 	}
 	
 	public Map<Propuesta, Integer> bolsonesPorPropuesta(Integer anio, Integer mes){
-		return null;
+		Map<Propuesta, Integer> map = new HashMap<Propuesta,Integer>();
+		for (Propuesta p: propuestasDeBolsones) {
+			map.put(p, cantidadDeBolsones(anio, mes, p));
+		}
+		return map;
 	}
 	
+	
+		
+
 	public Map<Establecimiento, List<Verdura>> participacionPorEstablecimiento(){
 		return null;
 	}
 		
+	@Override
+	public String toString() {
+		return "LaBolsaDeSoftwareVerde \n\n\tEstablecimientos=" + establecimientos + ", \n\n\tpropuestasDeBolsones="
+				+ propuestasDeBolsones + ", verdurasCosechadas=" + verdurasCosechadas + ".";
+	}
 }

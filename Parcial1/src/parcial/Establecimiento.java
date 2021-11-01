@@ -54,7 +54,7 @@ public class Establecimiento {
 			
 	@Override
 	public String toString() {
-		return "Nombre: "+ this.nombre +". Tabla de verduras: "+this.tablaVerduras;
+		return "Nombre: "+ this.nombre +". \n\n\t\tTabla de verduras: "+this.tablaVerduras;
 	}
 	
 	public void cargarCultivo(Verdura verdu) {
