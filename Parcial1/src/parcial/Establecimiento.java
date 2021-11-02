@@ -45,7 +45,7 @@ public class Establecimiento {
         @Override
         public Verdura next() {
         	Verdura v = iter.next();
-        	if (v.getAnio().equals(anio) && v.getMes().equals(mes)) {
+        	if (v.getAnio().equals(anio) && v.getMes().equals(mes) && v.getCosechada()) {
         		return v;
         	}
         	return null;
