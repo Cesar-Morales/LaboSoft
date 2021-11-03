@@ -9,7 +9,6 @@ public class Stack {
 	public Iterator<Object> iterator() {
 		return new Iterator<Object>(){
 			
-			private Iterator<Object> it = items.iterator();
 			private Integer pos = 0;
 
 			public boolean hasNext() {

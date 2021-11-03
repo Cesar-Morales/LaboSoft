@@ -14,7 +14,7 @@ public class StringConverterSet<E> extends AbstractSet<E>{
 	}
 	
 	@Override
-	public Iterator iterator() {
+	public Iterator<E> iterator() {
 		return  new IteratorStringAdapter();
 	}
 
@@ -23,7 +23,7 @@ public class StringConverterSet<E> extends AbstractSet<E>{
 		return set.size();
 	}
 	
-	class IteratorStringAdapter implements Iterator{
+	class IteratorStringAdapter implements Iterator<E>{
 		private Iterator<E> it = set.iterator();
 		
 		@Override
@@ -32,8 +32,8 @@ public class StringConverterSet<E> extends AbstractSet<E>{
 		}
 
 		@Override
-		public String next() {
-			return it.next().toString();
+		public E next() {
+			return it.next();
 		}
 		
 	}

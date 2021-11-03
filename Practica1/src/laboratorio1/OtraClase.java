@@ -1,5 +1,4 @@
 package laboratorio1;
-import laboratorio.*;
 
 public class OtraClase {
 	

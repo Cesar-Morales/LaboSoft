@@ -12,7 +12,7 @@ public class StringConverterSet2<E> extends AbstractSet<E> {
     //Se puede usar raw type para devolver aunque tenga un generico declarado.
     
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return new IteratorStringAdapter();
     }
 
@@ -20,7 +20,7 @@ public class StringConverterSet2<E> extends AbstractSet<E> {
     //que se deben implementar. Por ejemplo si aca cambio String por E, el método next devuelve E
 	//no String.
     
-    private class IteratorStringAdapter implements Iterator{
+    private class IteratorStringAdapter implements Iterator<E>{
 
         private Iterator<E> iterador = elements.iterator();
 
@@ -30,8 +30,8 @@ public class StringConverterSet2<E> extends AbstractSet<E> {
         }
 
         @Override
-        public String next() {
-            return iterador.next().toString();
+        public E next() {
+            return iterador.next();
         }
     }
 

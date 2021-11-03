@@ -1,8 +1,6 @@
 package ejercicio3;
 
-import java.io.Serializable;
 import java.util.Iterator;
-import java.util.Set;
 
 public class TestStringConvertSet {
 	public static void main(String[] args) {
@@ -26,15 +24,15 @@ public class TestStringConvertSet {
 		
 	/* StringConvertSet 2 */
   
-        StringConverterSet<Integer> set = new StringConverterSet<>();
+        StringConverterSet<String> set = new StringConverterSet<>();
 
         //Probando el funcionamiento de instanceof
         //Serializable d = set.crear();
         //System.out.println("Es una instancia de Set? " + (d instanceof Set));
 			
-		set.add(2);
-		set.add(3);
-		set.add(2);
+		set.add("2");
+		set.add("3");
+		set.add("2");
 		
 		Iterator<String> iterator = set.iterator();
 		

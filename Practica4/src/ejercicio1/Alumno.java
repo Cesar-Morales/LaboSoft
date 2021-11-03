@@ -1,6 +1,5 @@
 package ejercicio1;
 
-import java.util.Comparator;
 
 public class Alumno implements Comparable<Alumno>{
 	private String apellido;

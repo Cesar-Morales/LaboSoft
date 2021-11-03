@@ -6,7 +6,7 @@ import java.util.*;
 public class StackTest {
 	public static void main(String[] args) {
 		Stack pila = new Stack();
-		Iterator itr = pila.iterator();
+		Iterator<Object> itr = pila.iterator();
 		System.out.println("HAS NEXT?");
 		System.out.println(itr.hasNext());
 		System.out.println("NEXT");
