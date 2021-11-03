@@ -24,6 +24,10 @@ public class Alumno {
 		return materiaAprobada;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+	
 	@Override
 	public String toString() {
 		return "Alumno [nroLegajo=" + nroLegajo + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad

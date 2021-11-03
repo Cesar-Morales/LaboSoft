@@ -52,6 +52,15 @@ public class Facultad {
 		return null;
 	}
 	
+	public void imprimirAlumnoConPrimeraLetraIgualA(Character s) {
+		ImprimirSi<String> imp = character -> (character.charAt(0) == s);
+		for(Alumno a: alumnos) {
+			if(imp.imprimirSi(a.getNombre())) {
+				System.out.println(a);
+			}
+		}
+	}
+	
 	
 	
 }

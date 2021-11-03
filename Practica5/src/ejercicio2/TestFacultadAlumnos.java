@@ -25,7 +25,9 @@ public class TestFacultadAlumnos {
 		//System.out.println(UNLP);
 		//System.out.println(UNLP.notaMasAlta());
 		//UNLP.imprimirDosEstudiantes();
-		UNLP.imprimirAlumnoQueCurso("Matematica");
+		//UNLP.imprimirAlumnoQueCurso("Matematica"); true
+		//UNLP.imprimirAlumnoQueCurso("Matematicas"); falso
+		UNLP.imprimirAlumnoConPrimeraLetraIgualA('P');
 	}
 	
 }
