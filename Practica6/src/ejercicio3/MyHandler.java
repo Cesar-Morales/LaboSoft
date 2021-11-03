@@ -14,6 +14,7 @@ public class MyHandler implements HttpHandler {
 	public void handle(HttpExchange exchange) throws IOException {
 		//HttpExchange encapsula el requerimiento y la respuesta HTTP
 		
+		System.out.println("Se conecto: "+exchange.getRemoteAddress()+" (IP:PORT)");
 		InputStream input = exchange.getRequestBody();
 		input.read(); //lee la request
 		String response = "<h1>Hola desde JAVA</h1>";
